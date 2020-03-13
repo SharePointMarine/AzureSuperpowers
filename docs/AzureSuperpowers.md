@@ -299,9 +299,11 @@ Expected return:
 
 10. Accept the default **MinTTY** terminal emulator and click **Next**
 
-11. Accept the default Configuring extra options and click **Install**
+11. Accept the default Configuring extra options and click **Next**
 
-12. Uncheck "View Release Notes" and click **Finish**
+12. Click **Install**
+
+13. Uncheck "View Release Notes" and click **Finish**
 
 <div style="page-break-after: always;"></div>
 
@@ -322,19 +324,17 @@ Expected return:
 2.  If you are prompted with a message \"This User Installer is not
     meant to be run as an Administrator\" Click **OK**
 
-3.  Click **Next** on the Welcome portion of the setup
+3.  Accept the EULA and click **Next**
 
-4.  Accept the EULA and click **Next**
+4.  Accept the default installation location and click **Next**
 
-5.  Accept the default installation location and click **Next**
+5.  Accept the default Start Menu Folder and click **Next**
 
-6.  Accept the default Start Menu Folder and click **Next**
+6.  Select all additional tasks and click **Next** (Optional)
 
-7.  Select all additional tasks and click **Next** (Optional)
+7.  Click **Install**
 
-8.  Click **Install**
-
-9.  Uncheck "Launch Visual Studio Code" and click **Finish**
+8.  Uncheck "Launch Visual Studio Code" and click **Finish**
 
 <div style="page-break-after: always;"></div>
 
@@ -381,7 +381,7 @@ Expected return:
 Get-Module -Name 'Az.Compute' -ListAvailable | Select-Object -Property 'Version'
 ```
 
-4.  The expected output is **2.2.0** or later
+4.  The expected output is **2.4.1** or later
 
 ### Check the version of Git for Window
 
@@ -391,7 +391,7 @@ Get-Module -Name 'Az.Compute' -ListAvailable | Select-Object -Property 'Version'
 git --version
 ```
 
-2.  The expected output is **git version 2.21.0.windows.1** or later
+2.  The expected output is **git version 2.23.0.windows.1** or later
 
 3.  If you experience any issues with this step, restart VS Code and try
     again
@@ -400,7 +400,7 @@ git --version
 
 1.  From the VS Code File Menu, click **Help** then **About**
 
-2.  The expected version is **1.34.0** or later
+2.  The expected version is **1.37.1** or later
 
 ### Check the version of Azure Storage Explorer
 
@@ -408,7 +408,7 @@ git --version
 
 2.  From the File Menu, click **Help** then **About**
 
-3.  The expected version is **1.8.1** or later
+3.  The expected version is **1.9.0** or later
 
 <div style="page-break-after: always;"></div>
 
@@ -523,7 +523,7 @@ getting lost in the software.
     Pallet. Type **User** and select **Preferences: Open User
     Settings.**
 
-7.  Click the braces { } on at the top right of your window to **Open
+7.  Click the icon on at the top right of your window that is highlighted in the screenshot below to **Open
     Settings (JSON)**\
     <img src="./media/image4.png" border="1">
 
@@ -580,6 +580,8 @@ getting lost in the software.
     bring up the Select Language Mode drop-down where you can select
     another language for the current file you are working on.
 
+    <img src="./media/image0001.png" border="1">
+
     <img src="./media/image6.png" border="1">
 
 6.  Regarding PowerShell authoring in VS Code, you will want to have the
@@ -604,6 +606,8 @@ getting lost in the software.
     window also enables you to be able to select and execute multiple
     lines of PowerShell.
 
+    <img src="./media/image0002.png" border="1">
+
 <div style="page-break-after: always;"></div>
 
 ## Exercise - Clone the Azure Superpowers Repository
@@ -611,11 +615,11 @@ getting lost in the software.
 ### Clone Azure Superpowers via the VS Code GUI
 
 1.  Open a web browser and navigate to
-    <https://github.com/microsoft/Azure-Superpowers>
+    <https://github.com/microsoft/AzureSuperpowers>
 
 2.  Click on the **Clone or download** button
 
-    <img src="./media/image8.png" border="1">
+    <img src="./media/image0003.jpg" border="1">
 
 3.  Click the icon as shown below to copy the repository URL to your
     clipboard so that you can paste it into VS Code in the next steps
@@ -638,7 +642,7 @@ getting lost in the software.
 8.  The command palette will prompt for a Repository URL. Enter the URL
     that is currently in your clipboard (Show below for reference)
 
-    <https://github.com/microsoft/Azure-Superpowers.git>
+    <https://github.com/microsoft/AzureSuperpowers.git>
 
 9.  When prompted for a destination to clone the files, use
     C:\\AzSuperClass
@@ -852,6 +856,9 @@ fl \* -Force
 
 For function keys to operate, you may need to press the **Fn** key on
 some computer models, like Surface
+
+We have seen some systems experience issues with the clone button in GitHub where the URI was not copying properly to the clipboard.
+In this case, simply copy the URL to the clipboard by manually selecting it and copying it.
 
 <div style="page-break-after: always;"></div>
 
@@ -1147,18 +1154,18 @@ PowerShell.\
 1.	$spDisplayName  = 'PowerShell-<YOURALIAS>'
 2.	
 3.	$startDate = Get-Date
-4.	$KeyId = (New-GUID).GUID
-5.	$KeyValue = (New-GUID).GUID
+4.	$KeyId = (New-Guid).Guid
+5.	$KeyPassword = (New-Guid).Guid
 6.	
 7.	$psadCredential = New-Object Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential
 8.	$psadCredential.StartDate = $startDate
 9.	$psadCredential.EndDate = $startDate.AddYears(1)
 10.	$psadCredential.KeyId = $KeyId
-11.	$psadCredential.Password = $KeyValue
+11.	$psadCredential.Password = $KeyPassword
 12.	
 13.	New-AzADServicePrincipal -DisplayName $spDisplayName -PasswordCredential $psadCredential
 14.	
-15.	Write-Output "The password you've set is $KeyValue (WRITE THIS DOWN)"
+15.	Write-Output "The password you've set is $KeyPassword (WRITE THIS DOWN)"
 ```
 
 **IMPORTANT: Save the service principal's password**, you will need it
@@ -1405,7 +1412,7 @@ them to be.
 
    <img src="./media/image14.png" border="1">
 
-### ARM Templates vs Iterative PowerShell
+### ARM Templates vs Imperative PowerShell
 
    <img src="./media/image15.png" border="1">
 
@@ -1427,7 +1434,7 @@ Resource Manager templates)
 
     <img src="./media/image16.png" border="1">
 
-2.  Open the following folder: C:\\AzSuperClass\\Azure-Superpowers
+2.  Open the following folder: C:\\AzSuperClass\\AzureSuperpowers
 
 3.  Expand src\\Lab - ARM Templates, select the **StorageAccount.json**
     ARM template file and review its contents.
@@ -1451,7 +1458,7 @@ The storage account deployment should take just about 1 minute to
 complete.
 
 In the PowerShell terminal of VS Code, Set your working directory to
-**C:\\AzSuperClass\\Azure-Superpowers\\src\\Lab - ARM Templates**
+**C:\\AzSuperClass\\AzureSuperpowers\\src\\Lab - ARM Templates**
 
 Ensure that you have selected the PowerShell Integrated Console
 
@@ -1886,7 +1893,7 @@ Process Flow
     viewed in the bottom left-hand corner of VS Code. It will likely say
     'master' right now, but whichever branch it indicates is where any
     file modifications are taking place (regardless of if you use VS
-    Code, file explorer, notepad, etc to add or modify fles)
+    Code, file explorer, notepad, etc to add or modify files)
 
 3.  Verify that you can see the ReadMe file within the File Explorer
     view.
@@ -1922,7 +1929,7 @@ Process Flow
     pane with a gear icon on it that says **Project settings**. Click
     this button.
 
-2.  Under the General tab, click 'Security'.
+2.  Under the General tab, click 'Permissions'.
 
 3.  This will expand the security groups for the project. There are many
     groups that do a few different things, but the three basic ones are:
@@ -1936,10 +1943,10 @@ Process Flow
 
 4.  Click the group you wish to add a user to
 
-5.  On the right-hand action pane select the 'Members' column
+5.  Select the 'Members' button
 
-6.  Click the '+ Add...' button and type the member or group you wish to
-    add to this security group, then click the 'Save Changes' button
+6.  Click the 'Add' button and type the member or group you wish to
+    add to this security group, then click the 'Save' button
 
 <div style="page-break-after: always;"></div>
 
@@ -2171,8 +2178,8 @@ url: <https://docs.microsoft.com/en-us/vsts/repos/git/branch-policies>
 
     <img src="./media/image30.png" border="1">
 
-9.  Notice how **Allow users to approve their own changes** is selected.
-    If **Allow users to approve their own changes** is not selected, the
+9.  Notice how **Requestors can approve their own changes** is selected.
+    If **Requestors can approve their own changes** is not selected, the
     creator of the pull request can still vote Approve on their pull
     request, but their vote won\'t count toward the Require a minimum
     number of reviewers policy.
@@ -2241,7 +2248,7 @@ the \--global option when you're in that project.
     directory
 
 7.  Copy all folders located within
-    **C:\\AzSuperClass\\Azure-Superpowers\\src** over to
+    **C:\\AzSuperClass\\AzureSuperpowers\\src** over to
     **C:\\MyAzureProject\\Azure Superpowers**
 
 8.  Completing the steps above should result with the following:
@@ -2515,10 +2522,9 @@ Resource Manager templates)
     <img src="./media/image16.png" border="1">
 
 2.  Open the following **folder**: C:\\MyAzureProject\\Azure
-    Superpowers\\Lab - ARM Templates Advanced
+    Superpowers
 
-3.  Select **C:\\MyAzureProject\\Azure Superpowers\\Lab - ARM Templates
-    Advanced\\Exercise1\\adLabDeployment.ps1** and review its contents.
+3.  Select **C:\\MyAzureProject\\Azure Superpowers\\Lab - ARM Templates Advanced\\Exercise1\\adLabDeployment.ps1** and review its contents.
 
 4.  Instructions found in the ps1 file are also detailed in the next steps.
 
@@ -2610,7 +2616,7 @@ well as any errors or warnings if your deployment is not successful.
 ## Lab 8 - PowerShell DSC
 --------------------
 
-| Lab Description | This lab is to familiarize yourself with PowerShell DSC, writing a basic DSC configuration, creating a localhost.mof, testing it locally on the system, and then using Azure to deploy that configuration to an(y) Azure Virtual Machine.  This lab focusses on using DSC in the Push based model. |
+| Lab Description | This lab is to familiarize yourself with PowerShell DSC, writing a basic DSC configuration, creating a localhost.mof, testing it locally on the system, and then using Azure to deploy that configuration to an Azure Virtual Machine.  This lab focusses on using DSC in the Push based model. |
 | :------------ | :-------------- |
 | Glossary of Terms | *DSC configuration* – DSC configurations are PowerShell scripts that define a special type of function. To define a configuration, you use the PowerShell keyword Configuration. Configurations are Declarative PowerShell scripts which define and configure instances of resources. |
 |  | *DSC resource* – The "make it so" part of DSC. They contain the code that put and keep the target of a configuration in the specified state. Resources reside in PowerShell modules. |
@@ -2711,9 +2717,7 @@ well as any errors or warnings if your deployment is not successful.
 3.  Choose **Create a resource** in the upper left-hand corner of the
     Azure portal.
 
-4.  In the search box above the list of Azure Marketplace resources,
-    search for and select\
-    **Windows Server 2016 Datacenter**, then choose **Create**.
+4.  Under **Popular** Click on Windows Server 2016 Datacenter
 
 5.  Responses to the portal wizard are listed below. Your portal
     experience may look different as the portal updates frequently, but
@@ -2721,43 +2725,33 @@ well as any errors or warnings if your deployment is not successful.
 
 6.  Basics tab
 
-    a.  Type DSC1 for the virtual machine name
+    a.  Make sure the correct subscription is selected and then choose
+        to **Create new** resource group
 
-    b.  Provide a username, such as azureuser and a password. The
+    b.  Enter a name for the resourcegroup: portaldscrg-\<YOURALIAS\>
+
+            Example: portaldscrg-josmith
+
+    c.  Type DSC1 for the virtual machine name
+
+    d.  Choose East US or USGov Virginia for your Location
+    
+    e.  Choose D2s\_v3 (Or a similar size if this size is not in your
+        region)
+
+    f.  Provide a username, such as azureuser and a password. The
         password must be at least 12 characters long and meet complexity
         requirements. **Make sure to remember the password as you will
         use it to login**.
 
-    c.  Make sure the correct subscription is selected and then choose
-        to **Create new** resource group
-
-    d.  Enter a name for the resourcegroup: portaldscrg-\<YOURALIAS\>
-
-            Example: portaldscrg-josmith
-
-    e.  Choose East US or USGov Virginia for your Location
-
-    f.  Click OK
-
-7.  Size tab
-
-    a.  Choose D2s\_v3 (Or a similar size if this size is not in your
-        region)
-
-    b.  Click Select
-
-8.  Settings tab
-
-    a.  Under public inbound ports, select RDP so you can login to this
+    g.  Under public inbound ports, click **Allow selected ports** and select RDP so you can login to this
         lab machine via its public IP
 
-    b.  Set Boot diagnostics to Disabled to simplify this deployment
+    h.  At the bottom of the screen, Click **Review + create**
 
-    c.  Click OK
+7.  Review + create tab
 
-9.  Summary tab
-
-    a.  **DO NOT IMMEDIATELY CLICK OK.**  Instead, click on the link Download template and parameters
+    a.  **DO NOT IMMEDIATELY CLICK OK.**  Instead, look to the bottom of the page and click on the link **Download a template for automation**
 
     b.  This will present you with an ARM template that matches your
         deployment as you defined in the portal. This can be very
@@ -2775,7 +2769,7 @@ To return back to the deployment summary, click on the X to exit out from the Te
 
    <img src="./media/image47.png" border="1">
 
-Click OK to start the deployment of your VM, which will take 5-10
+Click Create to start the deployment of your VM, which will take 5-10
     minutes to complete.
 
 ### Login to the VM
@@ -2864,7 +2858,7 @@ Install-Module -Name NetworkingDSC
     is installed
 
 ```powershell
-Get-DscResource -Module NetworkingDsc
+Get-DscResource -Module NetworkingDSC
 Get-DscResource -Name Firewall | Select -ExpandProperty Properties
 ```
 
@@ -3142,19 +3136,19 @@ Select-AzSubscription –Subscription '<Id>'
 
 2.  Verify the firewall (Start-\>Run-\>wf.msc)
 
-    a.  You should see a new rule has been created, "Demo Block Rule"
+    a.  Click on Inbound Rules.  You should see a new rule has been created, "Demo Block Rule"
 
-        i. Action = \'Block\'
+        i. Action = Block
 
-        ii. LocalPort = '5000'
+        ii. LocalPort = 5000
 
-        iii.  Enabled = \'True\'
+        iii. Enabled = Yes
 
-        iv. Direction = \'Inbound\'
+        iv. Direction = Inbound
 
-        v. Profile = \'Any\'
+        v. Profile = All
 
-        vi. Protocol = \'TCP\'
+        vi. Protocol = TCP
 
 3.  Run the following PowerShell on DSC1:
 
@@ -3236,7 +3230,7 @@ New-AzResourceGroup -Name 'StorageExample-<YOURALIAS>' -Location USGovVirginia
 
 ### Create an Azure Storage Account
 
-1.  Storage account names must be universally unique. In this example,
+1.  Storage account names must be universally unique, **lower case** and alphanumeric (3-24 characters). In this example,
     the storage account name Aliasblobstorage is used. When this
     is listed, replace Alias with your alias, for example if your
     alias was bsmith, your storage account would be bsmithblobstorage.
@@ -3542,6 +3536,8 @@ Properties = @{"ContentType" = "text/plain"}
 <div style="page-break-after: always;"></div>
 
 ## Troubleshooting
+
+If you use the search option within Azure Storage Explorer, you may not see the expected items below, such as Blob Containers, File Shares, Queues, and Tables.  The search option will only pull up instances that are a direct match, such as the storage account name itself.
 
 <div style="page-break-after: always;"></div>
 
@@ -4064,13 +4060,12 @@ Get-AzResourceGroup
 
 15. Under 'Preferred Azure PowerShell Version' set the value to 1.0.0
 
-16. Click 'Save & Queue' at the top of the screen
+16. Click 'Save & Queue' at the top of the screen, and click 'Save & Queue'
 
-17. In the 'Save build pipeline and queue' dialog window you can leave
-    all options default and click the 'Save & Queue' button.
+17. In the 'Run pipeline' dialog window you can leave
+    all options default and click the 'Save and run' button.
 
-18. At the top of the window you will now see 'Build \#x has been
-    queued' with the \#x being a hyperlink. Click it.
+18. The build progress summary will begin automatically.
 
 19. Wait for the build to find an available agent and connect to Azure,
     you can watch the output window scroll by.
@@ -4241,8 +4236,8 @@ url: <https://docs.microsoft.com/en-us/vsts/repos/git/branch-policies>
 
     <img src="./media/image30.png" border="1">
 
-5.  Notice how **Allow users to approve their own changes** is selected.
-    If **Allow users to approve their own changes** is not selected, the
+5.  Notice how **Requestors can approve their own changes** is selected.
+    If **Requestors can approve their own changes** is not selected, the
     creator of the pull request can still vote Approve on their pull
     request, but their vote won\'t count toward the Require a minimum
     number of reviewers policy.
@@ -4471,6 +4466,7 @@ Files\\Helper.txt)
 | Key Takeaways | 1. Continuous Integration can be configured as a part of your application development process to ensure code is built and tested anytime changes are made to the code. |
 |  | 2. Continuous Integration can provide help meet infrastructure needs, including automating the build of DSC zip files for use in Azure. |
 | Author | Ralph Kyttle |
+|  | Mark Duda |
 
 <div style="page-break-after: always;"></div>
 
@@ -4495,7 +4491,7 @@ Files\\Helper.txt)
 
 7.  Name your build 'DSC Files - CI'
 
-8.  For the **Agent pool** select 'Hosted Windows 2019 with VS2019'
+8.  For the **Agent pool** select 'Azure Pipelines' and for the **Agent Specification** select 'windows-2019'
 
     <img src="./media/image58.png" border="1">
 
@@ -4515,66 +4511,71 @@ Files\\Helper.txt)
 
 <div style="page-break-after: always;"></div>
 
-12. You will need to edit the tasks to specify required settings
+12. You will need to edit each task to specify required settings
 
+13. PowerShell Task 1
     <img src="./media/image61.png" border="1">
 
 **Script:** Write-Output "##vso[task.setvariable variable=psmodulepath;]c:\modules\azurerm_6.7.0;$env:psmodulepath"
 
 (Command above can be copied from C:\MyAzureProject\Azure Superpowers\Lab - Helper Files\Helper.txt)
 
-   <img src="./media/image62.png" border="1">
+<div style="page-break-after: always;"></div>
 
-   <img src="./media/image63.png" border="1">
+14. PowerShell Task 2 **(Use the ellipsis button "..." to browse to the file location in your project repo and select the CreateDSCZipFiles.ps1 file)**
+   <img src="./media/image62.png" border="1">
 
 <div style="page-break-after: always;"></div>
 
-13. In the dropdown for Azure Subscription, select the service
+15. Azure File Copy Task **(Use your Service Connection for Azure Subscription, Use your Storage Account created in Lab 13, Use your container that was created in the storage account)**
+   <img src="./media/image63.png" border="1">
+
+16. In the dropdown for Azure Subscription, select the service
     connection that you recently created.
 
-14. Once you have made all edits to the tasks, save your build.
+17. Once you have made all edits to the tasks, save your build.
 
-15. Queue the build to execute it and have it run the tasks that you
+18. Queue the build to execute it and have it run the tasks that you
     defined.
 
-16. Upon successful build completion, you should be able to confirm that
+19. Upon successful build completion, you should be able to confirm that
     the file upload was successful by reviewing the storage account
     using Azure Storage Explorer
 
-17. Once you have seen a successful build, return to the Build
+20. Once you have seen a successful build, return to the Build
     Definition and edit your build **Triggers**
 
-18. Enable Continuous Integration and save
+21. Enable Continuous Integration and save
 
-19. Switch over to your repository in VS Code, and make sure you have
+22. Switch over to your repository in VS Code, and make sure you have
     the **dev** branch selected
 
-20. As a test to view Continuous Integration in action, edit line 145
+23. As a test to view Continuous Integration in action, edit line 145
     within SetWinSecuritySettings.ps1 in your local repo within VS Code,
     changing ValueData from 0 to 1
 
     This file can be found at:
     *DSCBuild\\DSCSourceFilesForBuild\\SetWinSecuritySettings*
 
-21. Save, commit, sync
+24. Save, commit, sync
 
-22. Perform a pull request to merge your code from your dev branch into
+25. Perform a pull request to merge your code from your dev branch into
     your master branch
 
-23. From within your Azure DevOps project, select the Pipelines tab
+26. From within your Azure DevOps project, select the Pipelines tab
 
-24. Under Pipelines, click Builds
+27. Under Pipelines, click Builds
 
-25. Select the 'DSC Files - CI' build
+28. Select the 'DSC Files - CI' build
 
-26. Review the build history information, which should now indicate that
+29. Review the build history information, which should now indicate that
     a new build was automatically initiated based on your latest file
     update. This new build should differ from your first build, as this
     new build will be listed as a CI build.
 
-27. Click into the Build to view its Summary and Logs
+30. Click into the Build to view its Summary and Logs
 
-28. Review your storage account upon completion of your build. You
+31. Review your storage account upon completion of your build. You
     should see a new zip file has been created within the
     SetWinSecuritySettings folder inside of resourceTemplates. You can
     validate that this file has been updated by reviewing the 'Last
@@ -4587,15 +4588,16 @@ Files\\Helper.txt)
 ## Lab 14 - Azure DevOps Release Continuous Deployment
 --------------------------------------------------------
 
-| Lab Description | In this lab, you will explore Continuous Delivery in Azure DevOps. |
+| Lab Description | In this lab, you will explore Continuous Deployment in Azure DevOps. |
 | :------------ | :-------------- |
-|  | Continuous Delivery (CD) is the process to build, test, configure and deploy from a build to a production environment. Multiple testing or staging environments create a Release Pipeline to automate the creation of infrastructure and deployment of applications. Successive environments support progressively longer-running activities of integration, load, and user acceptance testing. Continuous Integration starts the CD process and the pipeline stages each successive environment to the next upon successful completion of tests. |
-|  | Without Continuous Delivery, software release cycles were previously a bottleneck for application and operation teams. Manual processes led to unreliable releases that produced delays and errors. These teams often relied on handoffs that resulted in issues during release cycles. The automated release pipeline allows a “fail fast” approach to validation, where the tests most likely to fail quickly are run first and longer-running tests happen after the faster ones complete successfully. |
+|  | Continuous Deployment (CD) is the process to build, test, configure and deploy from a build to a production environment. Multiple testing or staging environments create a Release Pipeline to automate the creation of infrastructure and deployment of applications. Successive environments support progressively longer-running activities of integration, load, and user acceptance testing. Continuous Integration starts the CD process and the pipeline stages each successive environment to the next upon successful completion of tests. |
+|  | Without Continuous Deployment, software release cycles were previously a bottleneck for application and operation teams. Manual processes led to unreliable releases that produced delays and errors. These teams often relied on handoffs that resulted in issues during release cycles. The automated release pipeline allows a “fail fast” approach to validation, where the tests most likely to fail quickly are run first and longer-running tests happen after the faster ones complete successfully. |
 | Estimated Time to Complete | 45 minutes |
 | Key Takeaways | 1. Continuous Integration starts the CD process and the pipeline stages each successive environment the next upon successful completion of tests. |
 |  | 2. CD automates deployment from one environment to the next and may optionally depend on an approval step, in which a decision maker signs off on the changes electronically. CD may create an auditable record of the approval in order to satisfy regulatory procedures or other control objectives. |
 |  | 3. Modern release pipelines allow development teams to deploy new features fast and safely. |
 | Author | Ralph Kyttle |
+|  | Mark Duda |
 
 <div style="page-break-after: always;"></div>
 
@@ -4650,40 +4652,38 @@ DevOps and Azure deployment logs.
 
 9.  Click the link, '1 job, 0 task' to edit the tasks in the Dev stage
 
-10. Next, add tasks to the release to define the steps to execute
+10. Next, click the plus sign to add tasks to the release to define the steps to execute
     whenever the release is triggered
 
 11. Add an 'Azure Resource Group Deployment' task
 
 12. Once the task has been added, click on it, and edit the properties.
-    Sample information is shown below.
+    Sample information is provided below with screenshots as examples only.
+
+        Display name: Deploy VM
+
+        Azure Subscription: Name of service connection
+
+        Resource Group: azure-dev-alias (Example is based on using naming convention in Lab 12)
+
+        Location: Use the location specified when creating your resource group used above
+
+        Override template parameters: -vmName $(vmName) -adminPassword $(adminPassword)
 
     <img src="./media/image65.png" border="1">
 
-    <img src="./media/image66.png" border="1">
-
-13. You will need to provide template parameters, which can be supplied
-    in the Override template parameters text box. You can provide these
-    values directly, or you can reference variables that you can define
-    as a part of your release definition. To reference a variable, you
-    will use the following syntax: \$(variablename)
-
-    Create variables to be used in your release. An example of release
-    variables creation is shown in the screenshot below
-
-    <img src="./media/image67.png" border="1">
-
     <img src="./media/image68.png" border="1">
-
-    <div style="page-break-after: always;"></div>
 
     **Override template parameters:** -vmName \$(vmName) -adminPassword
     \$(adminPassword)
 
     (Command above can be copied from C:\\MyAzureProject\\Azure Superpowers\\Lab - Helper Files\\Helper.txt)
 
+13. Click save to save the pipeline before proceeding to further edits.
+
 14. Return back to the pipeline view, and clone the Dev stage, to create
-    a new stage for Prod
+    a new stage for Prod (We do this before creating the variable so the Prod scope will
+    be available in the variables setting)
 
     <img src="./media/image69.png" border="1">
 
@@ -4691,69 +4691,78 @@ DevOps and Azure deployment logs.
     values for Prod. In this step, update the resource group that the
     Prod stage deploys into.
 
-16. Using variables can be helpful in a release definition, as they can
-    enable some level of consistency within your stages, and allow for
-    updates to be managed at the variables level
+16. Since we are providing the template parameters using the builtin variables feature in Azure DevOps,
+    we will now need to update the variables section of this pipeline definition.  **Alternatively,
+    we could have simply provided the parameter in the format: -parametername parametervalue.
+    However, items such as the adminPassword would then be passed to Azure in a non-secure way.**
+    Using variables can be helpful in a release definition, as they can enable some level of
+    consistency within your stages, and allow for updates to be managed at the variables level
+
+17. Create the variables to be used in your release. Sample information is provided below and includes
+    example screenshots:
+
+        Variable Name: vmName           Value: DevVM       Scope: Dev
+        Variable Name: vmName           Value: ProdVM      Scope: Prod
+        Variable Name: adminPassword    Value: *********   Scope: Release
 
     <img src="./media/image70.png" border="1">
 
-17. Setup Continuous Deployment by setting the Continuous deployment
-    trigger on the Artifact to Enabled (See screenshot below: trigger
-    icon is marked with red box), set a Branch filter for the master
-    branch, and Save the release. Setting a Branch filter on the master
-    branch ensures that continuous deployment will only automatically
-    trigger this release whenever code has made its way into the master
-    branch.
+18. Click back to the Pipeline view to setup Continuous Deployment by setting
+    the Continuous Deployment trigger on the Artifact to Enabled (See screenshot
+    below: trigger icon is marked with red box), set a Branch filter for the master
+    branch, and Save the release. Setting a Branch filter on the master branch
+    ensures that continuous deployment will only automatically trigger this release
+    whenever code has made its way into the master branch.
 
     <img src="./media/image71.png" border="1">
 
-18. Enable Pre-deployment conditions on the Prod stage, and set yourself
+19. Enable Pre-deployment conditions on the Prod stage, and set yourself
     as the approver
     <img src="./media/image72.png" border="1">
 
     <img src="./media/image73.png" border="1">
 
-19. Save the release
+20. Save the release
 
-20. Create a Release to kick off your deployment. Keep any default
+21. Create a Release to kick off your deployment. Keep any default
     values that are already selected and click Create.
 
-21. The deployment should kick off in Dev, but it will wait for your
+22. The deployment should kick off in Dev, but it will wait for your
     approval to deploy into Prod. Allow the deployment to complete in
     Dev, but reject the deployment when you are asked if it should
     proceed to Prod. You should receive email notification once the
     release is complete in Dev and is pending deployment into Prod.
 
-22. Head over to VS Code, and edit virtualmachine.json
+23. Head over to VS Code, and edit virtualmachine.json
     *(simple-windows-vm\\virtualmachine.json)*
 
-23. Edit line 10, and update the default value to Standard\_D1\_v2
+24. Edit line 10, and update the default value to Standard\_D1\_v2
 
-24. Save, commit and push, then perform a Pull Request to merge code
+25. Save, commit and push, then perform a Pull Request to merge code
     from the dev branch into the master branch
 
-25. Thanks to continuous deployment, this change will make its way
+26. Thanks to continuous deployment, this change will make its way
     directly into Dev, but will be pending release into Prod until you
     approve.
 
-26. View your release status in Azure DevOps to see that continuous
+27. View your release status in Azure DevOps to see that continuous
     delivery has already kicked off a new deployment into Dev. You can
     also view status in the Azure portal, by taking a look at the
     Deployments tab on your Dev resource group.
 
-27. Review the deployment logs, and once the release to Dev is complete,
+28. Review the deployment logs, and once the release to Dev is complete,
     approve the release into Prod. We should see in both Dev and Prod
     that the VM size deployed should be Standard\_D1\_v2
 
-28. Edit the code in your repo, changing the VM size back to
+29. Edit the code in your repo, changing the VM size back to
     Standard\_D2\_v2
 
-29. Save, commit, push
+30. Save, commit, push
 
-30. Watch as continuous delivery makes changes to the VM size in Dev,
+31. Watch as continuous deployment makes changes to the VM size in Dev,
     and again waits for your approval for release to Prod
 
-31. Review deployment logs, and approve the release to Prod
+32. Review deployment logs, and approve the release to Prod
 
 <div style="page-break-after: always;"></div>
 
